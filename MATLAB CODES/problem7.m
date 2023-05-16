@@ -1,0 +1,18 @@
+clc;
+close all;
+w=[0:1:500]*pi/500;
+H=exp(1i*w)./(exp(1i*w)-0.9*ones(1,501));
+magH=abs(H);
+angH=angle(H);
+subplot(2,1,1);
+plot(w/pi,magH);
+grid on;
+title('Magnitude response');
+xlabel('Frequency in pi units');
+ylabel('Magnitude|H|');
+subplot(2,1,2);
+plot(w/pi,angH/pi);
+grid on;
+title('Phase response');
+xlabel('Frequency in pi units');
+ylabel('Phase in pi radians');

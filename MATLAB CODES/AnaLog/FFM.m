@@ -1,0 +1,18 @@
+clc;
+close all;
+fm=25;
+t=0:0.0001:.25;
+m=cos(2*pi*fm*t);
+subplot(3,1,1);
+plot(t,m);
+title('Message signal');
+fc=400;
+c=sin(2*pi*fc*t);
+subplot(3,1,2);
+plot(t,c);
+title('Carrier signal');
+mf=10;
+y=sin(2*pi*fc*t+mf.*(sin(2*pi*fm*t)));
+subplot(3,1,3);
+plot(t,y);
+title('Frequency Modulated signal');

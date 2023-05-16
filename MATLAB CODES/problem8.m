@@ -1,0 +1,24 @@
+clc;
+close all;
+dt=0.00005;
+t=-0.005:dt:0.05;
+Xa=exp(-1000*abs(t));
+subplot(2,1,1);
+plot(t*1000,Xa);
+title('Analog Signal');
+xlabel('t in msec');
+ylabel('Xa(t)');
+
+Wmax=2*pi*2000;
+K=500;
+k=0:1:K;
+W=k*Wmax/K;
+Xal=Xa*exp(-1i*t'*W)*dt;
+Xal=real(Xal);
+W=[-fliplr(W),W(2:501)];
+Xal=[fliplr(Xal),Xal(2:501)];
+subplot(2,1,2);
+plot(W/(2*pi*1000),Xal*1000);
+title('Continuous time Fourier Transform');
+xlabel('Frequency in KHz');
+ylabel('Xal(jW)');
